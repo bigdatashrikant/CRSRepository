@@ -1,0 +1,19 @@
+{
+    "workflowState": "ACTIVE",
+    "priority": "10",
+    "triggers": [
+        {
+            "exactLocation": true,
+            "searchTerms": "Style by Zhanna",
+            "matchmode": "MATCHEXACT",
+            "ecr:type": "trigger"
+        },
+        {
+            "exactLocation": true,
+            "dvalIDs": ["4294967041"],
+            "ecr:type": "trigger"
+        }
+    ],
+    "ecr:type": "content-item",
+    "ruleLimit": "1"
+}

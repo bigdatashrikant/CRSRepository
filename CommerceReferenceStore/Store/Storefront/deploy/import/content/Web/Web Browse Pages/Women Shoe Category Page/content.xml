@@ -1,0 +1,130 @@
+<ContentItem type="Page" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://endeca.com/schema/content/2008">
+  <TemplateId>TwoColumnPage</TemplateId>
+  <Name>Two-Column Page</Name>
+  <Property name="HeaderContent">
+    <ContentItemList type="HeaderContent">
+      <ContentItem type="HeaderContent">
+        <TemplateId>HeaderBanner-ATGCategory</TemplateId>
+        <Name>Category Header Banner</Name>
+        <Property name="headerTitle">
+          <String/>
+        </Property>
+        <Property name="backgroundBannerURL">
+          <String/>
+        </Property>
+        <Property name="promotionalContentId">
+          <String/>
+        </Property>
+      </ContentItem>
+    </ContentItemList>
+  </Property>
+  <Property name="SecondaryContent">
+    <ContentItemList type="SecondaryContent">
+      <ContentItem type="SecondaryContent">
+        <TemplateId>Breadcrumbs</TemplateId>
+        <Name>Breadcrumbs</Name>
+        <Property name="displayNamePropertyAlias">
+          <String>displayName</String>
+        </Property>
+      </ContentItem>
+      <ContentItem type="SecondaryContent">
+        <TemplateId>ContentSlot-Secondary</TemplateId>
+        <Name>Guided Navigation</Name>
+        <Property name="contentPaths">
+          <xavia:List xmlns:xavia="http://endeca.com/schema/xavia/2010">
+            <xavia:String>/content/Shared/Guided Navigation</xavia:String>
+          </xavia:List>
+        </Property>
+        <Property name="templateTypes">
+          <aaa:List xmlns:aaa="http://endeca.com/schema/xavia/2010">
+            <aaa:String>SecondaryContent</aaa:String>
+          </aaa:List>
+        </Property>
+        <Property name="templateIds">
+          <aaa:List xmlns:aaa="http://endeca.com/schema/xavia/2010"/>
+        </Property>
+        <Property name="ruleLimit">
+          <String>1</String>
+        </Property>
+      </ContentItem>
+      <ContentItem type="SecondaryContent">
+        <TemplateId>PromotionalContent-ATGSlot</TemplateId>
+        <Name>Promotional Content 1</Name>
+        <Property name="componentPath">
+          <String>CategoryPromotionContent1</String>
+        </Property>
+        <Property name="itemCount">
+          <String>1</String>
+        </Property>
+        <Property name="randomizeItems">
+          <Boolean>true</Boolean>
+        </Property>
+      </ContentItem>
+      <ContentItem type="SecondaryContent">
+        <TemplateId>PromotionalContent-ATGSlot</TemplateId>
+        <Name>Promotional Content 2</Name>
+        <Property name="componentPath">
+          <String>CategoryPromotionContent2</String>
+        </Property>
+        <Property name="itemCount">
+          <String>1</String>
+        </Property>
+        <Property name="randomizeItems">
+          <Boolean>true</Boolean>
+        </Property>
+      </ContentItem>
+    </ContentItemList>
+  </Property>
+  <Property name="MainContent">
+    <ContentItemList type="MainContent">
+      <ContentItem type="MainContent">
+        <TemplateId>ProductList-ATGCategoryChildren</TemplateId>
+        <Name>Category Products Grid</Name>
+        <Property name="recordsPerPage">
+          <String>12</String>
+        </Property>
+      </ContentItem>
+      <ContentItem type="MainContent">
+        <TemplateId>ContentSpotlight</TemplateId>
+        <Name>Spotlight Records</Name>
+        <Property name="title">
+          <String>generic_spotlightTitle_Articles</String>
+        </Property>
+        <Property name="itemsPerPage">
+          <String>4</String>
+        </Property>
+        <Property name="maxNumRecords">
+          <String>12</String>
+        </Property>
+        <Property name="recordSelection">
+          <Item class="com.endeca.infront.cartridge.RecordSpotlightSelection" xmlns="http://endeca.com/schema/xavia/2010">
+            <Property name="augment">false</Property>
+            <Property name="filterState">
+              <Item class="com.endeca.infront.navigation.model.FilterState">
+                <Property name="navigationFilters">
+                  <List>
+                    <String>660600704</String>
+                  </List>
+                </Property>
+              </Item>
+            </Property>
+          </Item>
+        </Property>
+        <Property name="showSeeAllLink">
+          <Boolean>false</Boolean>
+        </Property>
+        <Property name="seeAllLinkText">
+          <String>See All</String>
+        </Property>
+      </ContentItem>
+      <ContentItem type="MainContent">
+        <TemplateId>ProductSpotlight-ATGCategoryRecommendations</TemplateId>
+        <Name>Recommendations</Name>
+        <Property name="numberOfRecords">
+          <String>4</String>
+        </Property>
+      </ContentItem>
+    </ContentItemList>
+  </Property>
+</ContentItem>
+<!-- @version $Id: //hosting-blueprint/B2CBlueprint/version/11.1/Storefront/deploy/import/content/Web/Web Browse Pages/Women Shoe Category Page/content.xml#3 $$Change: 889821 $-->

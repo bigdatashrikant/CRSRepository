@@ -1,0 +1,13 @@
+{
+    "mdexMerchRuleID": 0,
+    "workflowState": "ACTIVE",
+    "ecr:lastModified": "2014-01-27T14:54:36.942Z",
+    "priority": "10",
+    "triggers": [{
+        "inherit": "TRUE",
+        "ecr:type": "trigger"
+    }],
+    "ecr:lastModifiedBy": "admin",
+    "ruleLimit": "1",
+    "ecr:type": "content-item"
+}

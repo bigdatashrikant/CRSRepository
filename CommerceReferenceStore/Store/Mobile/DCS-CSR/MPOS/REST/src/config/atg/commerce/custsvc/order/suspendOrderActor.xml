@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actor-template default-chain-id="saveAndSuspendOrder"
+  xsi:noNamespaceSchemaLocation="http://www.atg.com/xsds/actorChain_1.0.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!-- Persist the current shopping cart, move it into the SUSPENDED state, and generate a new empty shopping cart.
+       This chain redirects to the newOrder chain of the ChangeOrderActor, so all its inputs must be supplied when
+       calling this chain. -->
+  <actor-chain id="saveAndSuspendOrder" transaction="TX_SUPPORTS">
+    <component id="shoppingCart" name="/atg/commerce/custsvc/order/ShoppingCart" component-var="shoppingCart">
+      <!-- "200" is the SUSPENDED order state -->
+      <input name="current.state" value="200" />
+      <input name="current.salesChannel" value="InStore"/>
+    </component>
+
+    <actor id="saveCartActor" name="/atg/commerce/custsvc/order/CommitOrderActor" chain-id="persistOrder" return-model-var="model">
+      <input name="persistOrderSuccessURL" value="/model/atg/commerce/custsvc/environment/ChangeOrderActor/newOrder"/>
+    </actor>
+  </actor-chain>
+
+  <!-- Forces an order out of the SUSPENDED state and sets it as the shopping cart.  This chain will throw away
+       the current shopping cart regardless of whether or not it has items in it.  This chain calls the changeOrder
+       chain of the ChagineOrderActor, so all its inputs must be supplied here. -->
+  <actor-chain id="revertSuspendedOrder" transaction="TX_SUPPORTS">
+    <actor id="changeOrderActor" name="/atg/commerce/custsvc/environment/ChangeOrderActor" chain-id="changeOrder" return-model-var="model">
+    </actor>
+
+    <component id="shoppingCart" name="/atg/commerce/custsvc/order/ShoppingCart" component-var="shoppingCart">
+      <!-- "0" is the INCOMPLETE order state -->
+      <input name="current.state" value="0" />
+    </component>
+  </actor-chain>
+
+</actor-template>
+<!-- @version $Id: //hosting-blueprint/B2CBlueprint/version/11.1/Mobile/DCS-CSR/MPOS/REST/config/atg/commerce/custsvc/order/suspendOrderActor.xml#4 $$Change: 889821 $-->

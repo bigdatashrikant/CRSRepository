@@ -1,0 +1,9 @@
+{
+    "workflowState": "ACTIVE",
+    "priority": "30",
+    "triggers": [{
+        "exactLocation": false,
+        "ecr:type": "trigger"
+    }],
+    "ecr:type": "content-item"
+}

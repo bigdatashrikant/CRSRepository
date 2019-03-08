@@ -1,0 +1,3 @@
+{
+  profileGroupsConnectionUrl:"http://@@USER_SEGMENTS_HOST@@:@@USER_SEGMENTS_PORT@@/rest/model/atg/userprofiling/ProfileGroupsActor/getAllProfileGroups?atg-rest-output=json&atg-preview=false"
+}

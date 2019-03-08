@@ -1,0 +1,14 @@
+<ContentItem type="MainContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://endeca.com/schema/content/2008">
+  <TemplateId>ProductSpotlight-ATGTargeter</TemplateId>
+  <Name>Recommended Products (ATG Mobile Home) - ATGTargeter</Name>
+  <Property name="componentPath">
+    <String>ProductCatalog/MobilePromotionChild2</String>
+  </Property>
+  <Property name="itemCount">
+    <String>12</String>
+  </Property>
+  <Property name="randomizeItems">
+    <Boolean>true</Boolean>
+  </Property>
+</ContentItem>
+<!-- @version $Id: //hosting-blueprint/B2CBlueprint/version/11.1/Mobile/DCS-CSR/Endeca/deploy/import/content/Mobile/Dashboard/Dashboard Personalized Recommended Products/ATG Mobile Home Recommended Products/content.xml#2 $$Change: 889821 $-->

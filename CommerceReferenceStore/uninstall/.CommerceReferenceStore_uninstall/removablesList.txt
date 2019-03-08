@@ -1,0 +1,2 @@
+C:\ATG\ATG11.1\CommerceReferenceStore\installconfig\configXMLproperties.txt
+C:\ATG\ATG11.1\CommerceReferenceStore11.1_debug.txt

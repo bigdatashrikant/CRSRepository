@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actor-template default-chain-id="fetchOrder"
+  xsi:noNamespaceSchemaLocation="http://www.atg.com/xsds/actorChain_1.0.xsd"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <!-- Looks up an order and outputs it using the "retail" filter -->
+  <actor-chain id="fetchOrder">
+    <droplet id="adminOrderLookupDroplet" name="/atg/commerce/order/AdminOrderLookup"
+      var="orderLookupParamStack">
+      <input name="orderId" value="${param.orderId}" />
+      <input name="numOrders" value="1" />
+      <oparam name="output">
+        <output id="result" name="result" value="${orderLookupParamStack.result}"
+          filter-id="retail" />
+      </oparam>
+      <oparam name="error">
+        <output id="error" name="error" value="${orderLookupParamStack.errorMsg}" />
+      </oparam>
+    </droplet>
+  </actor-chain>
+
+  <!-- PAID - creates and applies payment groups onto an order, submits the order. -->
+  <!--        called when when order is fully paid.                                -->
+  <!-- params: orderId payment[0].amount payment[0].type payment[0].currencyCode 
+    payment[0].subtype (e.g. Visa, Mastercard) payment[1].amount if type==creditCard, 
+    also has a creditCardToken property lookup the order, create pg, init pg, add pg 
+    to order submit order -->
+  <actor-chain id="paid">
+    <component id="mpos-paid" name="/atg/commerce/custsvc/order/MPOSIntegrationService" 
+      method="paid" method-return-var="result" invoke-method-requires-session-confirmation="false">
+      <input name="orderId" value="${param.orderId}" class-name="java.lang.String" />
+      <input name="payments" value="${objectParam.payments}" class-name="java.util.List" />
+      <output id="result" add-map-children="true" value="${result}" />
+    </component>
+  </actor-chain>
+  
+  <!-- CANCEL - removes payment groups from an order, and sets its state to INCOMPLETE. -->
+  <!--          called when a suspended transaction/order is cancelled at POS, or       -->
+  <!--          not paid for by the end of the day.                                     -->
+  <actor-chain id="cancel">  
+    <component id="mpos-cancel" name="/atg/commerce/custsvc/order/MPOSIntegrationService" 
+      method="cancel" method-return-var="result" invoke-method-requires-session-confirmation="false">
+      <input name="orderId" value="${param.orderId}" class-name="java.lang.String" />
+      <output id="result" add-map-children="true" value="${result}" />
+    </component>
+  </actor-chain>
+
+</actor-template>
+<!-- @version $Id: //hosting-blueprint/B2CBlueprint/version/11.1/Mobile/DCS-CSR/MPOS/REST/config/atg/commerce/custsvc/order/mposIntegrationActor.xml#4 $$Change: 889821 $-->

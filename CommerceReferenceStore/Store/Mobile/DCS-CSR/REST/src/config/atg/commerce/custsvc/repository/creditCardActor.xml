@@ -1,0 +1,19 @@
+<actor-template>
+  <actor-chain id="addCreditCard">
+    <form id="creditCardFormHandler">
+      <!-- Override the base chain in order to passthrough the nickname to the form handler. -->
+	  <input name="creditCardMetaInfo.params.nickname" value="${param.nickname}"/>
+      <input name="newAddressMetaInfo.nickname" value="${param.addressNickname}"/>
+    </form>
+  </actor-chain>
+
+  <actor-chain id="addCreditCard-success">
+    <component id="creditCardFormHandler" xml-combine="remove"/>
+     <!-- Upon the successful addition of a new credit card, return the updated list of credit cards -->
+     <actor id="creditCards" name="/atg/userprofiling/ActiveCustomerProfileActor"
+           chain-id="creditCards" return-model-var="result">
+       <output id="allCreditCards" name="result" value="${result}"/>
+     </actor>
+  </actor-chain>
+</actor-template>
+<!-- @version $Id: //hosting-blueprint/B2CBlueprint/version/11.1/Mobile/DCS-CSR/REST/config/atg/commerce/custsvc/repository/creditCardActor.xml#2 $$Change: 889821 $-->

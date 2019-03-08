@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><ContentItem xmlns="http://endeca.com/schema/content/2008" type="Page" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <TemplateId>OneColumnPage</TemplateId>
+  <Name>Content</Name>
+  <Property name="HeaderContent">
+    <ContentItemList type="HeaderContent"/>
+  </Property>
+  <Property name="MainContent">
+    <ContentItemList type="MainContent">
+      <ContentItem type="MainContent">
+        <TemplateId>ContentSlot-Main</TemplateId>
+        <Name>HomeTheme</Name>
+        <Property name="contentPaths"><xavia:List xmlns:xavia="http://endeca.com/schema/xavia/2010"><xavia:String>/content/Shared/Scrolling Banner</xavia:String></xavia:List></Property><Property name="templateTypes"><xavia:List xmlns:xavia="http://endeca.com/schema/xavia/2010"><xavia:String>MainContent</xavia:String></xavia:List></Property><Property name="templateIds"><xavia:List xmlns:xavia="http://endeca.com/schema/xavia/2010"/></Property>
+        
+          
+        
+      <Property name="ruleLimit"><String>1</String></Property></ContentItem>
+      <ContentItem type="MainContent">
+        <TemplateId>ContentSlot-Main</TemplateId>
+        <Name>HomeFeaturedProducts</Name>
+        <Property name="contentPaths"><xavia:List xmlns:xavia="http://endeca.com/schema/xavia/2010"><xavia:String>/content/Shared/Scrolling Products</xavia:String></xavia:List></Property><Property name="templateTypes"><xavia:List xmlns:xavia="http://endeca.com/schema/xavia/2010"><xavia:String>MainContent</xavia:String></xavia:List></Property><Property name="templateIds"><xavia:List xmlns:xavia="http://endeca.com/schema/xavia/2010"/></Property>
+        
+          
+        
+      <Property name="ruleLimit"><String>1</String></Property></ContentItem>
+    </ContentItemList>
+  </Property>
+</ContentItem>
+<!-- @version $Id: //hosting-blueprint/B2CBlueprint/version/11.1/Storefront/deploy/import/content/Web/Home Pages/Default Home Page/content.xml#2 $$Change: 889821 $-->

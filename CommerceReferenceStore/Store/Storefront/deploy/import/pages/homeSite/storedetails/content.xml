@@ -1,0 +1,21 @@
+<ContentItem type="Page" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://endeca.com/schema/content/2008"  xmlns:xavia="http://endeca.com/schema/xavia/2010">
+  <TemplateId>LocationPageSlot</TemplateId>
+  <Name>Static Location Page Slot</Name>
+  <Property name="contentPaths">
+    <xavia:List>
+      <xavia:String>/content/Web/Store Details</xavia:String>
+    </xavia:List>
+  </Property>
+  <Property name="templateTypes">
+    <xavia:List>
+      <xavia:String>Page</xavia:String>
+    </xavia:List>
+  </Property>
+  <Property name="templateIds">
+    <xavia:List/>
+  </Property>
+  <Property name="ruleLimit">
+    <String>1</String>
+  </Property>
+</ContentItem>
+<!-- @version $Id: //hosting-blueprint/B2CBlueprint/version/11.1/Storefront/deploy/import/pages/homeSite/storedetails/content.xml#1 $$Change: 883241 $-->

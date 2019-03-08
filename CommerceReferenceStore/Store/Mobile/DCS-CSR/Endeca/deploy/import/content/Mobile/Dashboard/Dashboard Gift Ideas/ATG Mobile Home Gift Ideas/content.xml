@@ -1,0 +1,32 @@
+<ContentItem type="MainContent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://endeca.com/schema/content/2008">
+  <TemplateId>HorizontalRecordSpotlight</TemplateId>
+  <Name>Spotlight Records</Name>
+  <Property name="title">
+    <String/>
+  </Property>
+  <Property name="maxNumRecords">
+    <String>12</String>
+  </Property>
+  <Property name="recordSelection">
+    <Item class="com.endeca.infront.cartridge.RecordSpotlightSelection" xmlns="http://endeca.com/schema/xavia/2010">
+      <Property name="augment">true</Property>
+      <Property name="filterState">
+        <Item class="com.endeca.infront.navigation.model.FilterState">
+          <Property name="navigationFilters">
+            <List>
+              <String>4294967016</String>
+              <String>2225892774</String>
+            </List>
+          </Property>
+        </Item>
+      </Property>
+    </Item>
+  </Property>
+  <Property name="showSeeAllLink">
+    <Boolean>false</Boolean>
+  </Property>
+  <Property name="seeAllLinkText">
+    <String>See All</String>
+  </Property>
+</ContentItem>
+<!-- @version $Id: //hosting-blueprint/B2CBlueprint/version/11.1/Mobile/DCS-CSR/Endeca/deploy/import/content/Mobile/Dashboard/Dashboard Gift Ideas/ATG Mobile Home Gift Ideas/content.xml#3 $$Change: 890185 $-->

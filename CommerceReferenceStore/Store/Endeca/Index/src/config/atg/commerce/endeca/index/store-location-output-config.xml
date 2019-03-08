@@ -1,0 +1,24 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE item PUBLIC "-//Art Technology Group, Inc.//DTD Repository Ouput Specifier 1.0//EN" "http://www.atg.com/dtds/search/indexing-dependency-schema.dtd">
+
+<item item-descriptor-name="location" is-document="true">
+
+  <title property-name="locationId"/>
+  <properties>
+    <property name="$repositoryId" filter="unique" type="string" output-name="store.repositoryId"/>
+    <property name="type" type="string" is-dimension="true"  default-value="store" is-non-repository-property="true" property-accessor="null" />
+    <property name="name" type="string"/>
+    <property name="city" type="string" is-dimension="true"/>
+    <property name="stateAddress"  type="string"  text-searchable="true"  is-dimension="true"  output-name="store.state"/>
+    <property name="geocode" type="geocode"/>
+  </properties>
+  
+  <item property-name="sites">
+    <properties>
+      <property name="id" type="string" is-dimension="true" output-name="store.siteId"/>
+      <property name="$repositoryId" suppress="true"/> 
+    </properties>
+  </item>
+</item>
+
+<!-- @version $Id: //hosting-blueprint/B2CBlueprint/version/11.1/Endeca/Index/config/atg/commerce/endeca/index/store-location-output-config.xml#2 $$Change: 883241 $-->

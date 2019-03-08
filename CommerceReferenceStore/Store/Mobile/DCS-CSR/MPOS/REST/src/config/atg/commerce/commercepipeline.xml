@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE pipelinemanager
+        PUBLIC "-//Art Technology Group, Inc.//DTD Dynamo Pipeline Manager//EN"
+        'http://www.atg.com/dtds/pipelinemanager/pipelinemanager_1.0.dtd'>
+
+<!-- $Id: //hosting-blueprint/B2CBlueprint/version/11.1/Mobile/DCS-CSR/MPOS/REST/config/atg/commerce/commercepipeline.xml#2 $$Change: 889821 $ -->
+<!-- Add a place for validation of tokenizedCreditCard and cash payment groups -->
+<!-- by default, there's no validation happening -->
+
+<pipelinemanager>
+  <pipelinechain name="validatePaymentGroup" transaction="TX_REQUIRED" headlink="dispatchOnPGType">
+    <pipelinelink name="dispatchOnPGType" transaction="TX_MANDATORY">
+        <processor jndi="/atg/commerce/order/processor/ValidatePaymentGroupByType"/>
+        <transition returnvalue="6000" link="emptyValidatePG"/>
+    </pipelinelink>
+    <pipelinelink name="emptyValidatePG" transaction="TX_MANDATORY">
+        <processor class="atg.service.pipeline.processor.EmptyProcessor"/>
+        <!-- processor jndi="/atg/commerce/order/processor/ValidatePaymentGroup"/ -->
+    </pipelinelink>
+  </pipelinechain>
+  
+  <pipelinechain name="validatePaymentGroupNoApproval" transaction="TX_REQUIRED" 
+                   headlink="dispatchOnPGTypeNoApproval">
+    <pipelinelink name="dispatchOnPGTypeNoApproval" transaction="TX_MANDATORY">
+        <processor jndi="/atg/commerce/order/processor/ValidatePaymentGroupByType"/>
+        <transition returnvalue="6000" link="noOpValidateNoApproval"/>
+    </pipelinelink>
+
+    <!-- Pipeline manager requires that we map even no-op values to some processor -->
+    <!-- so use EmptyProcessor for payment groups we don't need to validate here.  -->
+    <pipelinelink name="noOpValidateNoApproval" transaction="TX_MANDATORY">
+        <processor class="atg.service.pipeline.processor.EmptyProcessor"/>
+    </pipelinelink>
+  </pipelinechain>
+</pipelinemanager>
+<!-- @version $Id: //hosting-blueprint/B2CBlueprint/version/11.1/Mobile/DCS-CSR/MPOS/REST/config/atg/commerce/commercepipeline.xml#2 $$Change: 889821 $-->

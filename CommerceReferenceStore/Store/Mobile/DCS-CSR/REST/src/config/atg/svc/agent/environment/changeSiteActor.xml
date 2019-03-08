@@ -1,0 +1,16 @@
+<actor-template>
+
+  <actor-chain id="selectSite">
+    <form id="changeSiteFormHandler">
+      <input name="inputParameters.siteId" value="${(siteId != null) ? siteId : param.siteId}"/>
+    </form>
+  </actor-chain>
+
+  <!-- return the site that has been selected -->
+  <actor-chain id="selectSite-success">
+    <component id="envTools" name="/atg/commerce/custsvc/environment/CSREnvironmentTools" component-var="envTools">
+      <output id="currentSite" name="currentSite" value="${envTools.environmentTools.currentSite}" filter-id="getSites"/>
+    </component>
+  </actor-chain>
+ </actor-template>
+<!-- @version $Id: //hosting-blueprint/B2CBlueprint/version/11.1/Mobile/DCS-CSR/REST/config/atg/svc/agent/environment/changeSiteActor.xml#2 $$Change: 889821 $-->

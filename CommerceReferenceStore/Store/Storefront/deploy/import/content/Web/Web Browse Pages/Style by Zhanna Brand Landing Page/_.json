@@ -1,0 +1,20 @@
+{
+    "mdexMerchRuleID": 4,
+    "workflowState": "ACTIVE",
+    "previewable": true,
+    "priority": 10,
+    "triggers": [
+        {
+            "exactLocation": true,
+            "searchTerms": "Style by Zhanna",
+            "matchmode": "MATCHEXACT"
+        },
+        {
+            "exactLocation": true,
+            "dvalIDs": ["4294967041"]
+        }
+    ],
+    "workflowNote": "",
+    "ecr:type": "content-item",
+    "userSegments": ["NoPriceRange"]
+}

@@ -1,0 +1,8 @@
+<actor-template>
+  <actor-chain id="create-success">
+    <component id="profile" name="/atg/userprofiling/ActiveCustomerProfile" component-var="activeCustomer">
+      <output id="profileId" name="profileId" value="${activeCustomer.repositoryId}" />
+    </component>
+  </actor-chain>
+ </actor-template>
+<!-- @version $Id: //hosting-blueprint/B2CBlueprint/version/11.1/Mobile/DCS-CSR/REST/config/atg/svc/agent/ui/formhandlers/customerProfileActor.xml#2 $$Change: 889821 $-->

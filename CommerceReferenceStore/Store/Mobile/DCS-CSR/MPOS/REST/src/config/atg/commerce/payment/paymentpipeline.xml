@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE pipelinemanager
+  PUBLIC "-//Art Technology Group, Inc.//DTD Dynamo Pipeline Manager//EN"
+  'http://www.atg.com/dtds/pipelinemanager/pipelinemanager_1.0.dtd'>
+
+<pipelinemanager>
+
+<pipelinechain name="noOpPaymentProcessorChain" transaction="TX_REQUIRED" headlink="noOpProcessPayment">
+  <pipelinelink name="noOpProcessPayment" transaction="TX_MANDATORY">
+    <processor jndi="/atg/commerce/payment/processor/NoOpProcessPayment"/>
+  </pipelinelink>
+</pipelinechain>
+
+</pipelinemanager>
+<!-- @version $Id: //hosting-blueprint/B2CBlueprint/version/11.1/Mobile/DCS-CSR/MPOS/REST/config/atg/commerce/payment/paymentpipeline.xml#1 $$Change: 885513 $ -->

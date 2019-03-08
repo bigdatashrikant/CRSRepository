@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bean-filtering>
+
+  <bean name="atg.projects.store.order.StoreOrderImpl">
+    <filter id="retail">
+      <property name="shippingGroupCount"/>
+      <property name="orderId" target="id"/>
+      <property name="totalItems" target="originalTotalItemsCount"/>
+      <property name="submittedDate"/>
+      <property name="status" target="stateDetailAsUserResource"/>     
+      <property name="priceInfo"/>
+      
+      <!-- we use the pg relationships instead of the payment groups directly because they are more up to date -->
+      <property name="paymentGroupRelationships"/>
+      <property name="shippingGroups"/>
+    </filter>
+  </bean> 
+  
+  <bean name="atg.commerce.order.CommerceItem">
+    <filter id="retail">
+      <property name="catalogRefId"/>
+      <property name="priceInfo"/>
+      <property name="productId" target="auxiliaryData.productRef.id"/>
+      <property name="productDisplayName" target="auxiliaryData.productRef.displayName"/>
+      <property name="quantity"/>     
+    </filter>
+  </bean>
+  
+  <!-- PRICING -->
+  
+  <bean name="atg.commerce.pricing.AmountInfo">
+    <filter id="retail">
+      <property name="amount"/>
+      <property name="currencyCode"/>      
+      <!-- Filter out list and sale price adjustments by outputting only adjustments with a null pricingModel -->
+      <property property-customizer="/atg/dynamo/service/filter/bean/PricingAdjustmentPropertyCustomizer" name="adjustments">
+        <attribute name="includeFirstAdjustment" value="false"/>
+      </property>
+      <property name="amountIsFinal" />
+      <property name="finalReasonCode" />
+    </filter>       
+  </bean>
+  
+  <bean name="atg.commerce.pricing.ItemPriceInfo">
+    <filter id="retail">
+      <property name="listPrice"/>
+      <property name="salePrice"/>
+      <property name="currentPriceDetailsSorted" />
+      <property name="quantityDiscounted"/>
+      <property name="onSale" />
+    </filter>
+  </bean>
+  
+  <bean name="atg.commerce.pricing.DetailedItemPriceInfo">
+    <filter id="retail">
+      <property name="quantity" />
+      <property name="tax" />
+      <property name="orderDiscountShare" />
+      <property name="orderManualAdjustmentShare" />
+      <property name="detailedUnitPrice" />
+      <property name="adjustments" />
+      <property property-customizer="/atg/dynamo/service/filter/bean/PricingAdjustmentPropertyCustomizer" name="adjustments">
+        <attribute name="includeFirstAdjustment" value="false"/>
+        <attribute name="includeSalePrice" value="false"/>
+        <attribute name="includeManualAdjustment" value="false"/>
+      </property>
+    </filter>
+  </bean>
+  
+  <bean name="atg.commerce.pricing.OrderPriceInfo">
+    <filter id="retail">
+      <property name="total" />
+      <property name="tax" />
+      <property name="shipping" />
+      <property name="discountAmount" />
+      <property name="manualAdjustmentTotal" />
+    </filter>
+  </bean>
+  
+  <bean name="atg.commerce.pricing.PricingAdjustment">
+    <filter id="retail">
+      <property name="coupon" target="coupon.displayName"/>
+      <property name="pricingModel" target="pricingModel.displayName"/>
+      <property name="description" target="adjustmentDescription" />
+      <property name="quantityAdjusted"/>
+      <property name="totalAdjustment"/>
+      <property name="manualPricingAdjustment" />
+    </filter>
+  </bean>  
+  
+  <!-- PAYMENT -->
+  <bean name="atg.commerce.order.PaymentGroupImpl">
+    <filter id="retail">
+      <property name="type" target="repositoryItem.type"/>
+      <property name="paymentGroupClassType" />
+      <property name="paymentMethod" />
+      <property name="amount" />
+      <property name="currencyCode" />
+    </filter>
+  </bean>
+ 
+   <bean default-filter="summary" name="atg.projects.store.payment.StoreStoreCredit">
+    <filter id="retail">
+      <property name="storeCreditNumber"/>
+      <property name="amount" property-customizer="/atg/dynamo/service/filter/bean/StoreCreditAmountPropertyCustomizer"/>
+    </filter>
+  </bean>
+    
+  <bean name="atg.commerce.order.PaymentGroupRelationship">
+    <filter id="retail">
+      <property name="amount"/>
+      <property name="paymentGroup"/>
+      <property name="paymentGroupClass" target="paymentGroup.class"/>
+    </filter>
+  </bean>
+  
+  <bean default-filter="summary" name="atg.commerce.order.CreditCard">
+    <filter id="retail">
+      <property name="amount"/>
+      <property name="billingAddress"/>
+      <property property-customizer="/atg/commerce/payment/filter/bean/CreditCardNumberPropertyCustomizer" name="maskedCardNumber" target="creditCardNumber">
+        <attribute name="leadingDigits" value="6" />
+        <attribute name="trailingDigits" value="4" />
+        <attribute name="maskCharacter" value="*" />
+      </property>
+      <property name="creditCardType"/>
+      <property name="currencyCode"/>
+      <property name="expirationMonth"/>
+      <property name="expirationYear"/>
+      <property name="paymentId"/>
+    </filter>    
+  </bean>
+  
+  <bean default-filter="summary" name="atg.payment.creditcard.CreditCardInfo">
+    <filter id="retail">
+    </filter>    
+  </bean>
+  
+  <!-- SHIPPING -->
+  
+  <bean name="atg.commerce.order.ShippingGroup">  
+    <filter id="retail">
+      <property name="shippingMethod"/>
+      <property property-customizer="/atg/dynamo/service/filter/bean/SGCIRelationshipPropertyCustomizer" name="commerceItemRelationships"/>
+      <property name="priceInfo"/>
+    </filter>
+  </bean>
+  
+  <bean name="atg.commerce.order.ShippingGroupCommerceItemRelationship">
+    <filter id="retail">
+      <property name="commerceItem"/>
+    </filter>
+  </bean>
+  
+  <bean name="atg.commerce.order.HardgoodShippingGroup">  
+    <filter id="retail">
+      <property name="shippingAddress"/>
+    </filter>
+  </bean>
+  
+</bean-filtering>
+<!-- @version $Id: //hosting-blueprint/B2CBlueprint/version/11.1/Mobile/DCS-CSR/MPOS/REST/config/atg/dynamo/service/filter/bean/beanFilteringConfiguration.xml#8 $$Change: 891991 $-->

@@ -1,0 +1,10 @@
+{
+    "workflowState": "ACTIVE",
+    "priority": "20",
+    "triggers": [{
+        "exactLocation": false,
+        "ecr:type": "trigger"
+    }],
+    "ecr:type": "content-item",
+    "userSegments": ["CategoryOnly"]
+}

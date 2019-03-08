@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE database-initializer SYSTEM "http://www.atg.com/dtds/dbinit_1_0.dtd">
+<database-initializer>
+
+  <schema id="orderSchema">
+    <sql>
+      <path>
+        <create>
+          sql/db_components/${database}/order_ddl.sql
+        </create>
+        <drop>
+          sql/uninstall/${database}/drop_order_ddl.sql
+        </drop>
+      </path>
+    </sql>
+  </schema>
+
+  <server-instance-type id="production">
+    <datasource id="nonswitchingCore">
+      <schema id="orderSchema"/>
+    </datasource>
+    <datasource id="switchingCore">
+      <schema id="orderSchema"/>
+    </datasource>
+  </server-instance-type>
+
+  <server-instance-type id="staging">
+    <datasource id="stagingnonswitchingCore">
+      <schema id="orderSchema"/>
+    </datasource>
+    <datasource id="stagingswitchingCore">
+      <schema id="orderSchema"/>
+    </datasource>
+  </server-instance-type>
+
+  <server-instance-type id="management">
+    <datasource id="management">
+      <schema id="orderSchema"/>
+    </datasource>
+  </server-instance-type>
+  
+</database-initializer>
+<!-- @version $Id: //hosting-blueprint/B2CBlueprint/version/11.1/Mobile/DCS-CSR/MPOS/cim/dbinit.xml#1 $$Change: 885513 $-->

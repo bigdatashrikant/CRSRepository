@@ -1,0 +1,11 @@
+<actor-template>
+
+  <!-- Add ASA required behavior -->
+  <actor-chain id="claimCoupon" transaction="TX_SUPPORTS">
+    <form id="claimCoupon">
+      <input name="claimCouponSuccessURL"
+             value="${param.cart == 'true' ? '/model/atg/commerce/custsvc/order/ShoppingCartActor/summary' : '/model/atg/commerce/custsvc/order/ConfirmOrderActor/confirmOrder'}"/>
+    </form>
+  </actor-chain>
+
+</actor-template>

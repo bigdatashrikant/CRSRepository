@@ -1,0 +1,11 @@
+{
+    "mdexMerchRuleID": 20,
+    "workflowState": "ACTIVE",
+    "priority": 10,
+    "triggers": [{
+        "exactLocation": false,
+        "ecr:type": "trigger"
+    }],
+    "ecr:type": "content-item",
+    "userSegments": ["site.mobileHomeSite"]
+}

@@ -1,0 +1,11 @@
+{
+  "host": "@@HOST@@",
+  "port": "@@AUTHORING_DGRAPH_PORT@@",
+  "recSpecProp": "record.id",
+  "recAggregationKey": "content.repositoryId",
+  "recFilter": "",
+  "recImgUrlProp" : "",
+  "recDisplayProps": [ "article.headline", "mediaContent.title" ],
+  "textSearchKey": "All",
+  "textSearchMatchMode" : "ALLPARTIAL"
+}

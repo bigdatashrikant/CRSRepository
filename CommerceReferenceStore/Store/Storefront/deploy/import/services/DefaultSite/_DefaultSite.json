@@ -1,0 +1,6 @@
+{
+  "urlPattern": "",
+  "description": "",
+  "displayName": "Default Site",
+  "ecr:type": "site-home"	
+}

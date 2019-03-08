@@ -1,0 +1,23 @@
+{
+    "mdexMerchRuleID": 1,
+    "workflowState": "ACTIVE",
+    "ecr:lastModified": "2014-01-27T14:54:36.970Z",
+    "priority": "10",
+    "triggers": [
+        {
+            "matchmode": "MATCHEXACT",
+            "keyword": "Style by Zhanna",
+            "inherit": "FALSE",
+            "ecr:type": "trigger"
+        },
+        {
+            "dvalIDs": ["4294967041"],
+            "inherit": "FALSE",
+            "ecr:type": "trigger"
+        }
+    ],
+    "ecr:lastModifiedBy": "admin",
+    "ruleLimit": "1",
+    "ecr:type": "content-item",
+    "userSegments": ["NoPriceRange"]
+}

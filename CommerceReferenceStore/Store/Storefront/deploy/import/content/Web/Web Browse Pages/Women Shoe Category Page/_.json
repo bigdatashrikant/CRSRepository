@@ -1,0 +1,14 @@
+{
+    "workflowState": "ACTIVE",
+    "workflowNote": "",
+    "ruleLimit": "1",
+    "ecr:type": "content-item",
+    "userSegments": ["CategoryOnly"],
+    "mdexMerchRuleID": 5,
+    "previewable": true,
+    "priority": 20,
+    "triggers": [{
+        "exactLocation": false,
+        "dvalIDs": ["3081128387"]
+    }],
+}

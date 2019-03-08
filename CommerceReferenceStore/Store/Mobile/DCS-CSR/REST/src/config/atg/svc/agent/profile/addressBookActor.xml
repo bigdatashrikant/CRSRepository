@@ -1,0 +1,13 @@
+<actor-template>
+  <actor-chain id="addAddress">
+    <form id="addressBookFormHandler">
+	  <input name="addressMetaInfo.nickname" value="${param.nickname}"/>
+	</form>
+  </actor-chain>
+  <actor-chain id="updateAddress">
+    <form id="addressBookFormHandler">
+	  <input name="addressMetaInfo.nickname" value="${param.nickname}"/>
+	</form>
+  </actor-chain>
+ </actor-template>
+<!-- @version $Id: //hosting-blueprint/B2CBlueprint/version/11.1/Mobile/DCS-CSR/REST/config/atg/svc/agent/profile/addressBookActor.xml#2 $$Change: 889821 $-->

@@ -1,0 +1,3 @@
+install=CRS Store=11.1
+systemEnv=rootDir=C:\ATG\ATG11.1\CommerceReferenceStore
+systemEnv=dynamoRoot=C:\ATG\ATG11.1

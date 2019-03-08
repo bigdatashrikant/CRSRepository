@@ -1,0 +1,11 @@
+{
+  "host": "@@HOST@@",
+  "port": "@@AUTHORING_DGRAPH_PORT@@",
+  "recSpecProp": "record.id",
+  "recAggregationKey": "product.repositoryId",
+  "recFilter": "",
+  "recImgUrlProp" : "",
+  "recDisplayProps": [ "product.displayName", "sku.activePrice", "product.briefDescription" ],
+  "textSearchKey": "All",
+  "textSearchMatchMode" : "ALLPARTIAL"
+}

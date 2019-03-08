@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE gsa-template
+    PUBLIC "-//Art Technology Group, Inc.//DTD General SQL Adapter//EN"
+    "http://www.atg.com/dtds/gsa/gsa_1.0.dtd">
+
+<gsa-template>
+  <item-descriptor name="paymentGroup" xml-combine="append">
+    <table name="dcspp_pay_group" type="primary" id-column-name="payment_group_id">
+
+      <property name="type" xml-combine="append">
+        <option value="tokenizedCreditCard" code="6"/>
+      </property>
+    </table>
+
+  </item-descriptor>
+
+  <item-descriptor name="tokenizedCreditCard" super-type="creditCard" sub-type-value="tokenizedCreditCard"
+                   cache-mode="simple"
+                   display-name-resource="itemDescriptorTokenCreditCard" item-cache-timeout="180000">
+
+    <attribute name="resourceBundle" value="atg.commerce.OrderRepositoryTemplateResources"/>
+
+    <table name="dcspp_token_crdt_crd" id-column-name="payment_group_id">
+      <property name="token" column-name="token" data-type="string" category-resource="categoryTokenCreditCard"
+                display-name-resource="token">
+        <attribute name="propertySortPriority" value="10"/>
+      </property>
+    </table>
+  </item-descriptor>
+  
+</gsa-template>
+<!-- @version $Id: //hosting-blueprint/B2CBlueprint/version/11.1/Mobile/DCS-CSR/MPOS/config/atg/commerce/order/orderrepository.xml#1 $$Change: 884492 $-->
